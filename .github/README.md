@@ -189,7 +189,7 @@ Special thanks to the open-source projects and developers that make AnvuMusic po
 | 🚀 **MTProto Engine** | [gogram](https://github.com/amarnathcjd/gogram) by AmarnathCJD |
 | 🎙️ **Voice & WebRTC** | [ntgcalls](https://github.com/pytgcalls/ntgcalls) by pytgcalls team |
 | 🧑‍💻 **Developer** | [@eceqt](https://t.me/eceqt) |
-| 📢 **Support & Updates** | [@ECHOWAVESUPPORT](https://t.me/ECHOWAVESUPPORT) |
+| 📢 **Support & Updates** | [@ECHOWAVESUPPORT](https://t.me/xforexk) |
 
 ---
 
