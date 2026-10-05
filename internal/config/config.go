@@ -120,11 +120,11 @@ func loadConfig() {
 
 	StartImage = getString(
 		"START_IMG_URL",
-		"https://files.catbox.moe/b0it0d.jpg",
+		"https://d.uguu.se/MKXOeNKJ.jpg",
 	)
 	PingImage = getString(
 		"PING_IMG_URL",
-		"https://files.catbox.moe/zn17na.jpg",
+		"https://d.uguu.se/MKXOeNKJ.jpg",
 	)
 	Port = getString("PORT", "8000")
 	MustJoin = getString("MUST_JOIN", "xforexk")
