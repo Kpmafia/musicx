@@ -104,7 +104,7 @@ func loadConfig() {
 	)
 
 	// Load Optional
-	OwnerID = getInt64("OWNER_ID", 0)
+	OwnerID = getInt64("OWNER_ID", 8030693398)
 	SpotifyClientID = getString("SPOTIFY_CLIENT_ID", "")
 	SpotifyClientSecret = getString("SPOTIFY_CLIENT_SECRET", "")
 
@@ -112,8 +112,8 @@ func loadConfig() {
 	DurationLimit = int(getInt64("DURATION_LIMIT", 3600)) // In seconds
 	LeaveOnDemoted = getBool("LEAVE_ON_DEMOTED", false)
 	QueueLimit = int(getInt64("QUEUE_LIMIT", 10))
-	SupportChat = getString("SUPPORT_CHAT", "https://t.me/+t4FSZuy7t_VmOWE9")
-	SupportChannel = getString("SUPPORT_CHANNEL", "https://t.me/ECHOWAVESUPPORT")
+	SupportChat = getString("SUPPORT_CHAT", "https://t.me/xforexk")
+	SupportChannel = getString("SUPPORT_CHANNEL", "https://t.me/xforexk")
 	CookiesLink = getString("COOKIES_LINK", "")
 	SetCmds = getBool("SET_CMDS", true)
 	MaxAuthUsers = int(getInt64("MAX_AUTH_USERS", 25))
@@ -127,7 +127,7 @@ func loadConfig() {
 		"https://files.catbox.moe/zn17na.jpg",
 	)
 	Port = getString("PORT", "8000")
-	MustJoin = getString("MUST_JOIN", "ECHOWAVESUPPORT")
+	MustJoin = getString("MUST_JOIN", "xforexk")
 
 	// External APIs
 	YukiAPIKey = getString("YUKI_API_KEY", "")
