@@ -1,4 +1,4 @@
-﻿/*
+/*
  * ● AnvuMusic
  * ○ A high-performance engine for streaming music in Telegram voicechats.
  *
@@ -45,6 +45,13 @@ var (
 	PingImage           string
 	Port                string
 	MustJoin            string
+
+	// External APIs (Yuki & Shruti)
+	YukiAPIKey      string
+	YukiAPIURL      string
+	ShrutiAPIKey    string
+	ShrutiAPIURL    string
+	ShrutiBackupURL string
 
 	// System & Logging
 	StartTime   time.Time
@@ -105,7 +112,7 @@ func loadConfig() {
 	DurationLimit = int(getInt64("DURATION_LIMIT", 3600)) // In seconds
 	LeaveOnDemoted = getBool("LEAVE_ON_DEMOTED", false)
 	QueueLimit = int(getInt64("QUEUE_LIMIT", 10))
-	SupportChat = getString("SUPPORT_CHAT", "https://t.me/+cWCtXiDOgIxlZWQ1")
+	SupportChat = getString("SUPPORT_CHAT", "https://t.me/+t4FSZuy7t_VmOWE9")
 	SupportChannel = getString("SUPPORT_CHANNEL", "https://t.me/ECHOWAVESUPPORT")
 	CookiesLink = getString("COOKIES_LINK", "")
 	SetCmds = getBool("SET_CMDS", true)
@@ -121,6 +128,13 @@ func loadConfig() {
 	)
 	Port = getString("PORT", "8000")
 	MustJoin = getString("MUST_JOIN", "ECHOWAVESUPPORT")
+
+	// External APIs
+	YukiAPIKey = getString("YUKI_API_KEY", "")
+	YukiAPIURL = getString("YUKI_API_URL", "https://music.yukiapi.site")
+	ShrutiAPIKey = getString("SHRUTI_API_KEY", "")
+	ShrutiAPIURL = getString("SHRUTI_API_URL", "https://api.shrutibots.site")
+	ShrutiBackupURL = getString("SHRUTI_BACKUP_URL", "https://api01.shrutibots.site")
 }
 
 func validateConfig() {
