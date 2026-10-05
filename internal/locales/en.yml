@@ -1012,8 +1012,8 @@ stream_now_playing: |
   <b>❍ Dᴜʀᴀᴛɪᴏɴ :</b> {duration}
   <b>❍ Rᴇǫᴜᴇsᴛᴇᴅ ʙʏ :</b> {by}
 
-  <b>✦ ᴘᴏᴡᴇʀᴇᴅ ʙʏ »</b> <a href="{credit_url}">EchoWave · Anvu</a>
-  </blockquote>
+  <b>✦ ᴘᴏᴡᴇʀᴇᴅ ʙʏ »</b> <a href="{credit_url}">EchoWave · xforexk</a>
+  </xforexk>
 
 # 👑 Sudo / Owner Join Messages
 sudo_join_owner: "👑 {user} — owner of {bot} — just entered the chat."
