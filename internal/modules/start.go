@@ -32,7 +32,7 @@ var loadingFrames = []string{
 	"😎 <b>sᴛᴧʀᴛɪηɢ..</b>",
 	"😎 <b>sᴛᴧʀᴛɪηɢ...</b>",
 	"💖 <b>ʜєʏ ʙᴧʙʏ!</b>",
-	"🌺 <b>ᴀɴᴠᴜ ꭙ ϻᴜsɪᴄ ♪\nsᴛᴧʀᴛed!</b>",
+	"🌺 <b>kanha ꭙ ϻᴜsɪᴄ ♪\nsᴛᴧʀᴛed!</b>",
 }
 
 func init() {
