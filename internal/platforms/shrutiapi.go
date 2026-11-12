@@ -35,8 +35,8 @@ import (
 const (
 	PlatformShrutiApi    state.PlatformName = "ShrutiApi"
 	yukiDefaultBaseURL                      = "https://music.yukiapi.site"
-	shrutiPrimaryBaseURL                    = "https://api.shrutibots.site"
-	shrutiBackupBaseURL                     = "https://api01.shrutibots.site"
+	shrutiPrimaryBaseURL                    = "https://api.shrutibots.in"
+	shrutiBackupBaseURL                     = "https://api01.shrutibots.in"
 )
 
 var (
