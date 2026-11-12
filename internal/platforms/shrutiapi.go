@@ -21,6 +21,7 @@ import (
 	"net/http"
 	"net/url"
 	"os"
+	"regexp"
 	"strings"
 	"sync"
 	"time"
@@ -231,8 +232,9 @@ func (s *ShrutiApiPlatform) Download(
 			return r.path, nil
 		}
 		if !errors.Is(r.err, context.Canceled) && !errors.Is(r.err, context.DeadlineExceeded) {
-			gologging.WarnF("ShrutiApi [%s] failed for %s: %v", r.name, track.ID, r.err)
-			errs = append(errs, r.name+": "+r.err.Error())
+			msg := redact(r.err.Error())
+			gologging.WarnF("ShrutiApi [%s] failed for %s: %s", r.name, track.ID, msg)
+			errs = append(errs, r.name+": "+msg)
 		}
 	}
 	if len(errs) > 0 {
@@ -266,7 +268,7 @@ func (s *ShrutiApiPlatform) downloadWithYuki(
 
 	resp, err := s.client.Do(req)
 	if err != nil {
-		return "", fmt.Errorf("yuki request failed: %w", err)
+		return "", fmt.Errorf("yuki request failed: %w", cleanErr(err))
 	}
 	defer resp.Body.Close()
 
@@ -347,7 +349,7 @@ func (s *ShrutiApiPlatform) downloadWithShruti(
 
 	resp, err := s.client.Do(req)
 	if err != nil {
-		return "", fmt.Errorf("token request failed: %w", err)
+		return "", fmt.Errorf("token request failed: %w", cleanErr(err))
 	}
 	defer resp.Body.Close()
 
@@ -400,7 +402,7 @@ func (s *ShrutiApiPlatform) downloadWithShruti(
 
 	sresp, err := s.client.Do(sreq)
 	if err != nil {
-		return "", fmt.Errorf("stream request failed: %w", err)
+		return "", fmt.Errorf("stream request failed: %w", cleanErr(err))
 	}
 	defer sresp.Body.Close()
 
@@ -413,6 +415,22 @@ func (s *ShrutiApiPlatform) downloadWithShruti(
 }
 
 // ── Helpers ─────────────────────────────────────────────────
+
+var keyParamRe = regexp.MustCompile(`(?i)((?:api_key|apikey|key|token)=)[^&\s"')]+`)
+
+// redact: error text me se api_key=..., key=..., token=... ki value hata deta hai
+func redact(s string) string {
+	return keyParamRe.ReplaceAllString(s, "${1}***")
+}
+
+// cleanErr: *url.Error se URL (aur uski key) hata ke sirf asli wajah rakhta hai
+func cleanErr(err error) error {
+	var ue *url.Error
+	if errors.As(err, &ue) {
+		return ue.Err
+	}
+	return err
+}
 
 func (s *ShrutiApiPlatform) saveToFile(
 	reader io.Reader,
@@ -636,6 +654,9 @@ func splitKeys(raws ...string) []string {
 	seen := map[string]bool{}
 	var out []string
 	for _, raw := range raws {
+		if i := strings.Index(raw, "#"); i >= 0 {
+			raw = raw[:i] // inline comment hata do
+		}
 		f := strings.FieldsFunc(raw, func(r rune) bool {
 			return r == ',' || r == ' ' || r == '\n' || r == ';'
 		})
