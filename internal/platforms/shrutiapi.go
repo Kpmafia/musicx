@@ -279,8 +279,8 @@ func (s *ShrutiApiPlatform) downloadWithYuki(
 }
 
 // ── Shruti API ──────────────────────────────────────────────
-// Primary: https://api.shrutibots.site
-// Backup:  https://api01.shrutibots.site
+// Primary: https://api.shrutibots.in
+// Backup:  https://api01.shrutibots.in
 // Endpoint: GET /download?url={encoded_yt_url}&type={media_type}&api_key={api_key}
 
 // shrutiRace runs primary & backup in parallel with the SAME key; first success wins.
