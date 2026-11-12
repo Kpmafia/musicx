@@ -149,7 +149,6 @@ func (s *ShrutiApiPlatform) Download(
 	statusMsg *telegram.NewMessage,
 ) (string, error) {
 	if f := findFile(track); f != "" {
-		gologging.Debug("ShrutiApi: cache hit -> " + f)
 		return f, nil
 	}
 
@@ -258,7 +257,6 @@ func (s *ShrutiApiPlatform) downloadWithYuki(
 	endpoint := fmt.Sprintf("%s/stream/%s?key=%s", baseURL, videoID, url.QueryEscape(apiKey))
 
 	// key ko log me nahi dikhate (security)
-	gologging.DebugF("ShrutiApi: Yuki requesting for %s via %s", track.ID, baseURL)
 
 	req, err := http.NewRequestWithContext(ctx, http.MethodGet, endpoint, nil)
 	if err != nil {
@@ -338,7 +336,6 @@ func (s *ShrutiApiPlatform) downloadWithShruti(
 		baseURL, encodedURL, mediaType, url.QueryEscape(apiKey),
 	)
 
-	gologging.DebugF("ShrutiApi: requesting stream for %s (%s) via %s", track.ID, mediaType, baseURL)
 
 	req, err := http.NewRequestWithContext(ctx, http.MethodGet, endpoint, nil)
 	if err != nil {
@@ -391,7 +388,6 @@ func (s *ShrutiApiPlatform) downloadWithShruti(
 	}
 
 	streamURL := fmt.Sprintf("%s/stream/%s?token=%s&type=%s", baseURL, track.ID, token, mediaType)
-	gologging.DebugF("ShrutiApi: streaming from %s", streamURL)
 
 	sreq, err := http.NewRequestWithContext(ctx, http.MethodGet, streamURL, nil)
 	if err != nil {
@@ -572,7 +568,6 @@ func (p *KeyPool) Acquire() (string, error) {
 		}
 		k.used++
 		p.next = (idx + 1) % n
-		gologging.DebugF("KeyPool[%s]: key #%d used %d/%d", p.name, idx+1, k.used, p.limit)
 		return k.key, nil
 	}
 	return "", ErrAllKeysExhausted
